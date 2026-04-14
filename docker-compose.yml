@@ -1,0 +1,73 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: rag-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - rag_mongo_data:/data/db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 }).ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  qdrant:
+    image: qdrant/qdrant:v1.12.4
+    container_name: rag-qdrant
+    ports:
+      - "6333:6333"  # REST
+      - "6334:6334"  # gRPC
+    volumes:
+      - rag_qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: src/RagSystem.Api/Dockerfile
+    image: rag-system-api
+    container_name: rag-api
+    depends_on:
+      mongo:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:8080
+      Mongo__ConnectionString: mongodb://mongo:27017
+      Mongo__Database: ragsystem
+      Qdrant__Host: qdrant
+      Qdrant__Port: "6334"
+      Qdrant__UseHttps: "false"
+      Qdrant__Collection: rag_documents
+      # Set these in a local .env file next to this compose.yml — never commit real keys.
+      OpenAi__ApiKey: ${OPENAI_API_KEY:-}
+      OpenAi__EmbeddingModel: ${OPENAI_EMBEDDING_MODEL:-text-embedding-3-small}
+      OpenAi__ChatModel: ${OPENAI_CHAT_MODEL:-gpt-4o-mini}
+      OpenAi__EmbeddingDimensions: ${OPENAI_EMBEDDING_DIMENSIONS:-1536}
+      Jwt__Issuer: ragsystem
+      Jwt__Audience: ragsystem-clients
+      Jwt__SigningKey: ${JWT_SIGNING_KEY:-dev-only-signing-key-please-change-me-32b!}
+      Jwt__ExpiryMinutes: "480"
+    ports:
+      - "5080:8080"
+    restart: unless-stopped
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: rag-system-client
+    container_name: rag-client
+    depends_on:
+      - api
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+
+volumes:
+  rag_mongo_data:
+  rag_qdrant_data:

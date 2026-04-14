@@ -1,0 +1,68 @@
+{
+  "app": { "title": "Demo Hệ thống RAG" },
+  "nav": {
+    "documents": "Tài liệu",
+    "upload": "Tải lên",
+    "types": "Thể loại",
+    "chat": "Hỏi đáp",
+    "logout": "Đăng xuất",
+    "language": "Ngôn ngữ"
+  },
+  "login": {
+    "title": "Đăng nhập",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "submit": "Đăng nhập",
+    "error": "Email hoặc mật khẩu không đúng"
+  },
+  "documents": {
+    "title": "Tài liệu bạn được phép đọc",
+    "empty": "Không có tài liệu nào phù hợp với vai trò của bạn.",
+    "fileName": "Tên tệp",
+    "type": "Thể loại",
+    "version": "Phiên bản",
+    "uploadedAt": "Tải lên lúc",
+    "status": "Trạng thái",
+    "allowedRoles": "Vai trò được phép"
+  },
+  "upload": {
+    "title": "Tải tài liệu lên",
+    "file": "Tệp",
+    "type": "Thể loại tài liệu",
+    "allowedRoles": "Các vai trò được phép",
+    "addCustomRole": "Thêm vai trò mới",
+    "add": "Thêm",
+    "selectAtLeastOneRole": "Hãy chọn ít nhất một vai trò",
+    "submit": "Tải lên",
+    "uploading": "Đang tải lên & lập chỉ mục…",
+    "success": "Tải lên thành công (phiên bản {{version}})"
+  },
+  "types": {
+    "title": "Thể loại tài liệu",
+    "name": "Tên",
+    "displayName": "Tên hiển thị",
+    "builtIn": "Mặc định",
+    "create": "Tạo thể loại mới",
+    "submit": "Tạo"
+  },
+  "chat": {
+    "title": "Đặt câu hỏi",
+    "question": "Câu hỏi",
+    "ask": "Hỏi",
+    "thinking": "Đang suy nghĩ…",
+    "answer": "Trả lời",
+    "sources": "Nguồn tham khảo",
+    "noResults": "Không tìm thấy ngữ cảnh phù hợp.",
+    "newChat": "Tạo hội thoại mới",
+    "noSessions": "Chưa có hội thoại nào — hãy bắt đầu.",
+    "delete": "Xoá",
+    "deleteConfirm": "Xoá hội thoại này?",
+    "placeholder": "Hỏi bất cứ điều gì về tài liệu của bạn…",
+    "send": "Gửi",
+    "emptyState": "Bắt đầu hội thoại. Tôi chỉ trả lời dựa trên tài liệu mà vai trò của bạn được phép truy cập."
+  },
+  "errors": {
+    "forbidden": "Bị từ chối truy cập. Yêu cầu vai trò: {{roles}}",
+    "generic": "Đã có lỗi xảy ra"
+  }
+}

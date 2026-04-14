@@ -1,0 +1,16 @@
+**/bin
+**/obj
+**/.vs
+**/.vscode
+**/.idea
+**/node_modules
+**/dist
+**/.vite
+client/node_modules
+client/dist
+*.user
+.git
+.gitignore
+appsettings.Development.json
+.claude/
+.cursor/

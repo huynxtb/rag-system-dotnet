@@ -1,0 +1,68 @@
+{
+  "app": { "title": "RAG System Demo" },
+  "nav": {
+    "documents": "Documents",
+    "upload": "Upload",
+    "types": "Types",
+    "chat": "Chat",
+    "logout": "Logout",
+    "language": "Language"
+  },
+  "login": {
+    "title": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "error": "Invalid email or password"
+  },
+  "documents": {
+    "title": "Documents you can read",
+    "empty": "No documents available for your roles.",
+    "fileName": "File name",
+    "type": "Type",
+    "version": "Version",
+    "uploadedAt": "Uploaded at",
+    "status": "Status",
+    "allowedRoles": "Allowed roles"
+  },
+  "upload": {
+    "title": "Upload document",
+    "file": "File",
+    "type": "Document type",
+    "allowedRoles": "Allowed roles",
+    "addCustomRole": "Add custom role",
+    "add": "Add",
+    "selectAtLeastOneRole": "Select at least one role",
+    "submit": "Upload",
+    "uploading": "Uploading & indexing…",
+    "success": "Uploaded successfully (version {{version}})"
+  },
+  "types": {
+    "title": "Document types",
+    "name": "Name",
+    "displayName": "Display name",
+    "builtIn": "Built-in",
+    "create": "Create new type",
+    "submit": "Create"
+  },
+  "chat": {
+    "title": "Ask a question",
+    "question": "Question",
+    "ask": "Ask",
+    "thinking": "Thinking…",
+    "answer": "Answer",
+    "sources": "Sources",
+    "noResults": "No accessible context found.",
+    "newChat": "New chat",
+    "noSessions": "No conversations yet — start a new chat.",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this conversation?",
+    "placeholder": "Ask me anything about your documents…",
+    "send": "Send",
+    "emptyState": "Start a conversation. I'll answer using only the documents your roles can access."
+  },
+  "errors": {
+    "forbidden": "Access denied. Required role(s): {{roles}}",
+    "generic": "Something went wrong"
+  }
+}
