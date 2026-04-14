@@ -96,9 +96,15 @@ public class RagService
                 hits.Select((h, i) => $"[Source {i + 1} | doc={h.DocumentId} v{h.Version} chunk={h.ChunkIndex}]\n{h.Text}"));
 
         var systemPrompt =
-            "You are a helpful enterprise assistant. Answer using the provided document excerpts and " +
-            "the ongoing conversation. If the answer is not grounded in the excerpts, say you don't know. " +
-            "Cite excerpts by [Source N]. Keep answers concise.";
+            """
+            
+            You are a helpful enterprise assistant. Answer using the provided document excerpts and the ongoing conversation.
+            
+            If the answer is not grounded in the excerpts, say you don't know.
+            
+            Cite excerpts by [Source N]. Keep answers concise.
+            
+            """;
 
         var messages = new List<ChatTurn>
         {

@@ -14,3 +14,4 @@ client/dist
 appsettings.Development.json
 .claude/
 .cursor/
+docker-data/

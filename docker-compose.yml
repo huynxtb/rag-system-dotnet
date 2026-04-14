@@ -5,7 +5,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - rag_mongo_data:/data/db
+      - ./docker-data/mongo:/data/db
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 }).ok"]
@@ -20,7 +20,7 @@ services:
       - "6333:6333"  # REST
       - "6334:6334"  # gRPC
     volumes:
-      - rag_qdrant_data:/qdrant/storage
+      - ./docker-data/qdrant:/qdrant/storage
     restart: unless-stopped
 
   api:
@@ -67,7 +67,3 @@ services:
     ports:
       - "5173:80"
     restart: unless-stopped
-
-volumes:
-  rag_mongo_data:
-  rag_qdrant_data:
